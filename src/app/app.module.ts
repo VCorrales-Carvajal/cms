@@ -7,10 +7,16 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { TopBarComponent } from './shared/topbar/topbar.component';
+import { LeftBarComponent } from './shared/leftbar/leftbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopBarComponent,
+    LeftBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
