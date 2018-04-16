@@ -1,7 +1,7 @@
 
 <top-bar></top-bar>
 <div class="container">
-  <div class="row" *ngIf="auth.isLogin">
+  <div class="row" *ngIf="isLoggedIn">
     <div class="col-md-4">
       <left-bar></left-bar>
     </div>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="!auth.isLogin">
+  <div class="row" *ngIf="!isLoggedIn">
     <div class="col-md-12" style="text-align: center">
 
       <button type="button" 
