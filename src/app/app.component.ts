@@ -1,4 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   
   ngOnInit(): void { }
-  constructor() { }
+  constructor(private auth: AuthService) { }
+
+  public doLogin() {
+    this.auth.login()
+      .then((value) => console.log('good: ', value), (reason) => console.log('bad: ', reason));
+  }
 
 }

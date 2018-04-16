@@ -6,15 +6,19 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
-    constructor(private afAuth: AngularFireAuth) {}
-
-
-    public login() {
-        this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    constructor(private afAuth: AngularFireAuth) {
+        this.afAuth.authState
+            .subscribe(user => console.log(user));
     }
 
-    public logout() {
-        this.afAuth.auth.signOut();
+
+    public login(): Promise<any> {
+        return this.afAuth
+            .auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    }
+
+    public logout(): Promise<any>  {
+        return this.afAuth.auth.signOut();
     }
 
 

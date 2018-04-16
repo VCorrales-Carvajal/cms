@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
 
@@ -23,7 +25,9 @@ import { AuthService } from './shared/auth.service';
   imports: [
     BrowserModule,
     AlertModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
