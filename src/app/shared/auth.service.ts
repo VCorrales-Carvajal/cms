@@ -8,8 +8,8 @@ import { BehaviorSubject } from "rxjs";
 @Injectable()
 export class AuthService {
     public isLoggedIn: boolean = false;
-    
-    private isLogin = new BehaviorSubject<boolean>(true);
+
+    private isLogin = new BehaviorSubject<boolean>(false);
     
     constructor(private afAuth: AngularFireAuth) {
         this.afAuth.authState
@@ -20,6 +20,7 @@ export class AuthService {
 
     public userState = this.isLogin.asObservable();
     public setLoginStatus(loginData: boolean) {
+        console.log(loginData);
         this.isLogin.next(loginData)
     }
 
