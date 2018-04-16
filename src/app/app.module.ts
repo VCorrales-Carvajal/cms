@@ -11,6 +11,8 @@ import { TopBarComponent } from './shared/topbar/topbar.component';
 import { LeftBarComponent } from './shared/leftbar/leftbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
+import { AuthService } from './shared/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
