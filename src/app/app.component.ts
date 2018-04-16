@@ -16,4 +16,9 @@ export class AppComponent implements OnInit{
       .then((value) => console.log('good: ', value), (reason) => console.log('bad: ', reason));
   }
 
+  public doLogout() {
+    this.auth.logout()
+      .then((value) => console.log('good: ', value), (reason) => console.log('bad: ', reason));
+  }
+
 }

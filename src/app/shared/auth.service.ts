@@ -6,9 +6,14 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
+    public isLogin: boolean = false;
+
     constructor(private afAuth: AngularFireAuth) {
+
         this.afAuth.authState
-            .subscribe(user => console.log(user));
+            .subscribe(user => {
+                if (user) this.isLogin = true;
+            });
     }
 
 
