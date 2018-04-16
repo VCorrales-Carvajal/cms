@@ -8,13 +8,11 @@ import { AuthService } from '../auth.service';
 })
 export class TopBarComponent implements OnInit{
   
-  public isLoggedIn: boolean = false;
-  
   ngOnInit(): void { }
   
   constructor(private auth: AuthService) { 
     this.auth.userState
-      .subscribe(x => this.isLoggedIn = x);
+      .subscribe(x => this.auth.isLoggedIn = x);
   }
 
   public doLogin() {

@@ -7,6 +7,8 @@ import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class AuthService {
+    public isLoggedIn: boolean = false;
+    
     private isLogin = new BehaviorSubject<boolean>(true);
     
     constructor(private afAuth: AngularFireAuth) {
