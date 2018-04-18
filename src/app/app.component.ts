@@ -14,22 +14,18 @@ export class AppComponent implements OnInit{
   public showMedia: Boolean = false;
   public showSettings: Boolean = false;
 
+  public activePage: string;
+
   constructor(private auth: AuthService,
     private nav: MenuService) {  }
 
-  setAllPagesToInvisible() {
-    this['showPages'] = false;
-    this['showMedia'] = false;
-    this['showSettings'] = false;
-  }
   ngOnInit(): void { 
     this.auth.userState
       .subscribe(x => this.auth.isLoggedIn = x);
 
     this.nav.page
       .subscribe(x => {
-        this.setAllPagesToInvisible();
-        this[x] = true;
+        this.activePage = x;
 
       })
 
