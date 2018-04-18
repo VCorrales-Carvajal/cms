@@ -12,16 +12,23 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './shared/topbar/topbar.component';
 import { LeftBarComponent } from './shared/leftbar/leftbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { PagesComponent } from './pages/pages.component';
+import { MediaComponent } from './media/media.component';
+import { SettingsComponent } from './settings/settings.component';
 
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     LeftBarComponent,
-    FooterComponent
+    FooterComponent,
+    PagesComponent,
+    MediaComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
