@@ -10,10 +10,6 @@ import { MenuService } from './shared/menu.service';
 })
 export class AppComponent implements OnInit{
 
-  public showPages: Boolean = true;
-  public showMedia: Boolean = false;
-  public showSettings: Boolean = false;
-
   public activePage: string;
 
   constructor(private auth: AuthService,
