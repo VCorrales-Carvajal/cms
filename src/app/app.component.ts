@@ -17,21 +17,20 @@ export class AppComponent implements OnInit{
   constructor(private auth: AuthService,
     private nav: MenuService) {  }
 
+  setAllPagesToInvisible() {
+    this['showPages'] = false;
+    this['showMedia'] = false;
+    this['showSettings'] = false;
+  }
   ngOnInit(): void { 
     this.auth.userState
       .subscribe(x => this.auth.isLoggedIn = x);
 
     this.nav.page
       .subscribe(x => {
-        this.showPages = false;
-        this.showMedia = false;
-        this.showSettings= false;
-        switch (x) {
-          case "/pages": this.showPages = true; break;
-          case "/media": this.showMedia = true; break;
-          case "/settings": this.showSettings = true; break;
-          default: this.showPages = true; break;
-        };
+        this.setAllPagesToInvisible();
+        this[x] = true;
+
       })
 
   }
