@@ -1,4 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'left-bar',
@@ -7,7 +8,15 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 })
 export class LeftBarComponent implements OnInit{
   
-  ngOnInit(): void { }
-  constructor() { }
+  public menuArray: Array<any> = [];
+  constructor(public menu: MenuService) { }
+  
+  ngOnInit(): void { 
+    this.menuArray = this.menu.getMenu();
+  }
+
+  showComponent(link: string){
+    this.menu.setPage(link);
+  }
 
 }

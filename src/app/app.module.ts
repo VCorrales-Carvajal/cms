@@ -14,6 +14,7 @@ import { LeftBarComponent } from './shared/leftbar/leftbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { AuthService } from './shared/auth.service';
+import { MenuService } from './shared/menu.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AuthService } from './shared/auth.service';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
