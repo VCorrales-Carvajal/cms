@@ -1,8 +1,8 @@
 
 <div *ngFor="let msg of msgArray" 
-    class="alert alert-primary" 
+    class="alert alert-{{msg.type}}" 
     role="alert">
-    {{msg}}
+    {{msg.text}}
   </div>
 
 <form>

@@ -9,7 +9,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class PageComponent implements OnInit{
   
-  public msgArray: Array<string> = [];
+  public msgArray: Array<{type: string, text: string}> = [];
 
   public page: { 
       title: string, 
@@ -36,7 +36,7 @@ export class PageComponent implements OnInit{
     this.af.collection("/Pages")
       .add(this.page)
       .then(x => {
-        this.msgArray.push("The page was created!");
+        this.msgArray.push({type: "success", text: "The page was created!"});
       })
   }
 
