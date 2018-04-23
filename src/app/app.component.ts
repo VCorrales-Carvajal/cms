@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
+import { DataService } from './shared/data.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,14 @@ export class AppComponent implements OnInit{
 
   public activePage: string;
 
+
   constructor(private auth: AuthService,
-    private nav: MenuService) {  }
+    private nav: MenuService,
+    private data: DataService) {  }
 
   ngOnInit(): void { 
+
+
     this.auth.userState
       .subscribe(x => this.auth.isLoggedIn = x);
 

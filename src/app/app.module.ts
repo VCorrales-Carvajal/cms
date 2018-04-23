@@ -20,6 +20,10 @@ import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
 
 
+
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './shared/data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +39,11 @@ import { MenuService } from './shared/menu.service';
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
+    
   ],
-  providers: [AuthService, MenuService],
+  providers: [AuthService, MenuService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

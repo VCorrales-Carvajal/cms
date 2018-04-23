@@ -1,1 +1,19 @@
-Pages
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Published Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let page of pageList">
+        <th scope="row">{{ page.slug }}</th>
+        <td>{{ page.title }}</td>
+        <td>{{ page.subject }}</td>
+        <td>{{ page.publishedDate | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
