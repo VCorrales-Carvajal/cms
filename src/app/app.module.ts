@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
@@ -19,10 +20,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
 
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
+import { PageComponent } from './pages/new/page.component';
+
 
 @NgModule({
   declarations: [
@@ -32,15 +33,18 @@ import { DataService } from './shared/data.service';
     FooterComponent,
     PagesComponent,
     MediaComponent,
-    SettingsComponent
+    SettingsComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule
+    
     
   ],
   providers: [AuthService, MenuService, DataService],

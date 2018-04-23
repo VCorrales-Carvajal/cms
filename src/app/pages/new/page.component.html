@@ -1,0 +1,46 @@
+
+<div *ngFor="let msg of msgArray" 
+    class="alert alert-primary" 
+    role="alert">
+    {{msg}}
+  </div>
+
+<form>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" 
+        class="form-control" 
+        id="title" name="title" 
+        [(ngModel)]="page.title" 
+        placeholder="Page Title">
+    </div>
+    <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" 
+          class="form-control" 
+          id="subject" name="subject" 
+          [(ngModel)]="page.subject" 
+          placeholder="Page subject">
+    </div>
+    <div class="form-group">
+    <label for="slug">Slug</label>
+    <input type="text" 
+        class="form-control" 
+        id="slug" 
+        name="slug" 
+        [(ngModel)]="page.slug" 
+        placeholder="Page Slug...">
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea class="form-control" 
+        id="body" 
+        name="body" 
+        [(ngModel)]="page.body" 
+        rows="10"></textarea>
+    </div>
+  </form>
+
+  <button type="button" 
+    class="btn btn-primary"
+    (click)="saveObject()">Save</button>
