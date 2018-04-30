@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -9,6 +9,9 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class PageComponent implements OnInit{
   
+  @Output() InsertPageDone: EventEmitter<{ type: string, text: string }> 
+    = new EventEmitter();
+
   public msgArray: Array<{type: string, text: string}> = [];
 
   public page: { 
@@ -36,7 +39,8 @@ export class PageComponent implements OnInit{
     this.af.collection("/Pages")
       .add(this.page)
       .then(x => {
-        this.msgArray.push({type: "success", text: "The page was created!"});
+        this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
+        //this.msgArray.push({type: "success", text: "The page was created!"});
       })
   }
 

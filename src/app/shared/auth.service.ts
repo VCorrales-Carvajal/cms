@@ -20,7 +20,6 @@ export class AuthService {
 
     public userState = this.isLogin.asObservable();
     public setLoginStatus(loginData: boolean) {
-        console.log(loginData);
         this.isLogin.next(loginData)
     }
 

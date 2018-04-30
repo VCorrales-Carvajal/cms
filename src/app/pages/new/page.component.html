@@ -5,7 +5,11 @@
     {{msg.text}}
   </div>
 
-<form>
+<form #myform="ngForm">
+    
+  <!-- pristine: {{ myform.pristine | json }} <br/>
+    touched: {{ myform.touched | json }} -->
+
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" 

@@ -8,7 +8,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit{
-  
+  public showNew: boolean = false;
   public pageList: Array<any> = [];
   constructor(private auth: AuthService,
     public af: AngularFirestore) {  }
@@ -21,6 +21,10 @@ export class PagesComponent implements OnInit{
       .valueChanges()
       .subscribe(x => this.pageList = x);
 
+  }
+
+  public hidePage(args: { type: string, text: string }) {
+    if (args.type == "success") this.showNew = false;
   }
 
 }

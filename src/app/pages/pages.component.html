@@ -3,7 +3,8 @@
   class="btn btn-primary"
   (click)="showNew=!showNew;">New Page</button>
 
-<new-page *ngIf="showNew"></new-page>
+<new-page *ngIf="showNew" 
+  (InsertPageDone)="hidePage($event)"></new-page>
 
 <table class="table">
     <thead>
