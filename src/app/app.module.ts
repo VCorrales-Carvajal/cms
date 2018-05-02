@@ -25,6 +25,7 @@ import { MenuService } from './shared/menu.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
+import { AuthGuard } from './shared/auth.guard';
 
 
 
@@ -50,7 +51,7 @@ import { DataService } from './shared/data.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService, MenuService, DataService],
+  providers: [ AuthService, MenuService, DataService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
