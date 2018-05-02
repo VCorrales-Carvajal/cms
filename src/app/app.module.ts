@@ -6,6 +6,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AppRoutingModule } from "./app-routing.module";
 
 import { environment } from '../environments/environment';
 
@@ -16,13 +17,15 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
+import { PageComponent } from './pages/new/page.component';
+import { NotFoundComponent } from './shared/notfound/notfound.component';
 
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
-import { PageComponent } from './pages/new/page.component';
+
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import { PageComponent } from './pages/new/page.component';
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    PageComponent
+    PageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +47,8 @@ import { PageComponent } from './pages/new/page.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    HttpClientModule
-    
-    
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [AuthService, MenuService, DataService],
   bootstrap: [AppComponent]

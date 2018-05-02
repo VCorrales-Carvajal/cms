@@ -1,6 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pages-page',
@@ -10,8 +12,10 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class PagesComponent implements OnInit{
   public showNew: boolean = false;
   public pageList: Array<any> = [];
+
   constructor(private auth: AuthService,
-    public af: AngularFirestore) {  }
+    public af: AngularFirestore,
+    private router: Router) {  }
   
   ngOnInit(): void { 
     this.auth.userState
@@ -34,6 +38,10 @@ export class PagesComponent implements OnInit{
 
   public hidePage(args: { type: string, text: string }) {
     if (args.type == "success") this.showNew = false;
+  }
+
+  public goToNew() {
+    this.router.navigate(['/pages', 'new']);
   }
 
 }

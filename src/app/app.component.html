@@ -6,9 +6,7 @@
       <left-bar></left-bar>
     </div>
     <div class="col-md-8">
-        <pages-page *ngIf="activePage == 'showPages'"></pages-page>
-        <media-page *ngIf="activePage == 'showMedia'"></media-page>
-        <settings-page *ngIf="activePage == 'showSettings'"></settings-page>
+        <router-outlet></router-outlet>
     </div>
   </div>  
 </div>
