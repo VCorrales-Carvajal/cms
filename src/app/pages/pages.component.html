@@ -9,6 +9,7 @@
 <table class="table">
     <thead>
       <tr>
+        <th scope="col">id</th>
         <th scope="col">#</th>
         <th scope="col">Title</th>
         <th scope="col">Subject</th>
@@ -17,10 +18,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let page of pageList">
-        <th scope="row">{{ page.slug }}</th>
-        <td>{{ page.title }}</td>
-        <td>{{ page.subject }}</td>
-        <td>{{ page.publishedDate | date:'dd/MM/yyyy' }}</td>
+        <td>{{ page.id }}</td>
+        <td>{{ page.doc.slug }}</td>
+        <td>{{ page.doc.title }}</td>
+        <td>{{ page.doc.subject }}</td>
+        <td>{{ page.doc.publishedDate | date:'dd/MM/yyyy' }}</td>
       </tr>
     </tbody>
   </table>

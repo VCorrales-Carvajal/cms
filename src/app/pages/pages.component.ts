@@ -18,8 +18,17 @@ export class PagesComponent implements OnInit{
       .subscribe(x => this.auth.isLoggedIn = x);
 
     this.af.collection("/Pages")
-      .valueChanges()
-      .subscribe(x => this.pageList = x);
+      .snapshotChanges()
+      .subscribe(x => {
+        let documentArray: Array<any> = [];
+        x.forEach(element => {
+          this.af.doc<any>('/Pages/' + element.payload.doc.id)
+            .valueChanges()
+            .subscribe(x => documentArray.push({id: element.payload.doc.id, doc: x }));
+        });
+
+        this.pageList = documentArray;
+      });
 
   }
 
