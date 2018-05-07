@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'new-page',
@@ -14,21 +15,26 @@ export class PageComponent implements OnInit{
 
   public msgArray: Array<{type: string, text: string}> = [];
 
-  public page: { 
-      title: string, 
-      subject: string,
-      slug: string,
-      publishedDate: Date,
-      body: string
-    } = {
-      title: "",
-      subject: "",
-      slug: "",
-      publishedDate: new Date(),
-      body: ""
-    }
+  public page: { title: string, subject: string, slug: string, publishedDate: Date, body: string} 
+    = { title: "", subject: "", slug: "", publishedDate: new Date(), body: "" };
+
+
+  public id: string = "";
+
   constructor(private auth: AuthService,
-    public af: AngularFirestore) {  }
+    private af: AngularFirestore,
+    private activatedRoute: ActivatedRoute) {  
+
+      activatedRoute.params
+        .subscribe(x => {
+          this.id = x["id"];
+          this.af.doc("/Pages/" + this.id)
+            .valueChanges()
+            .subscribe(fbDoc => {
+              if (fbDoc) this.page = <any>fbDoc;
+            });
+        });
+    }
   
   ngOnInit(): void { 
     
@@ -36,12 +42,22 @@ export class PageComponent implements OnInit{
   }
 
   saveObject() {
-    this.af.collection("/Pages")
+
+    if (this.id != "new") {
+      this.af.doc("/Pages/" + this.id)
+      .update(this.page)
+      .then(x => {
+        this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
+      })
+    } else {
+      this.af.collection("/Pages")
       .add(this.page)
       .then(x => {
         this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
-        //this.msgArray.push({type: "success", text: "The page was created!"});
+        
       })
+    }
+    
   }
 
 }

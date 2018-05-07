@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let page of pageList">
-        <td>{{ page.id }}</td>
+        <td><a [routerLink]="['/pages', page.id]">{{ page.id }}</a></td>
         <td>{{ page.doc.slug }}</td>
         <td>{{ page.doc.title }}</td>
         <td>{{ page.doc.subject }}</td>
